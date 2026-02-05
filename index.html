@@ -39,6 +39,7 @@
             gap: 20px;
             position: relative;
             height: 60px;
+            justify-content: center;
         }
 
         button {
@@ -63,7 +64,6 @@
         #noBtn {
             background: #e74c3c;
             color: white;
-            position: absolute;
             transition: all 0.3s ease;
         }
 
@@ -157,6 +157,7 @@
             noBtn.classList.add('shake');
             
             // Move the button to a random position
+            noBtn.style.position = 'fixed';
             const x = Math.random() * (window.innerWidth - 200);
             const y = Math.random() * (window.innerHeight - 100);
             
