@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reenu Will You Be My Better Half?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            height: 60px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background: #667eea;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+
+        #noBtn {
+            background: #e74c3c;
+            color: white;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .shake {
+            animation: shakeIt 0.5s;
+        }
+
+        @keyframes shakeIt {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .evil {
+            position: fixed;
+            font-size: 40px;
+            animation: disappear 1s;
+            pointer-events: none;
+        }
+
+        @keyframes disappear {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 20px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        footer a:hover {
+            border-bottom: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reenu Will you be my Better Half?</h1>
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <a href="https://github.com/Ishaq45/Binary-Love" target="_blank">No thotta setha !!</a>
+        </p>
+        <p>Created by <strong>@Ishaq45</strong> | Ishaq</p>
+        <p>
+            <a href="https://github.com/Ishaq45" target="_blank">Github</a>
+        </p>
+    </footer>
+
+    <audio id="song" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const song = document.getElementById('song');
+
+        yesBtn.addEventListener('click', function() {
+            alert('Nee Yes than solluva nu enaku theriyum Bcoz Unaku No solra option Illaiye Baby! ❤️');
+            
+            confetti({
+                particleCount: 150,
+                spread: 80
+            });
+            
+            song.play();
+        });
+
+        noBtn.addEventListener('mouseenter', function() {
+            noBtn.classList.add('shake');
+            
+            // Move the button to a random position
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            
+            // Generate evil faces
+            for(let i = 0; i < 5; i++) {
+                let devil = document.createElement('div');
+                devil.textContent = '😈';
+                devil.className = 'evil';
+                devil.style.left = Math.random() * window.innerWidth + 'px';
+                devil.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(devil);
+                
+                setTimeout(() => devil.remove(), 1000);
+            }
+        });
+
+        noBtn.addEventListener('mouseleave', function() {
+            noBtn.classList.remove('shake');
+        });
+    </script>
+</body>
+</html>
