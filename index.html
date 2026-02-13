@@ -3,130 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reenu Will You Marry Me ? </title>
+    <title>Reenu, Happy Valentines Day Babyyy 💍</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
             background: url('image.jpg') no-repeat center center fixed;
             background-size: cover;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+            z-index: 1;
+        }
+
+        /* Animated hearts background */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: float-hearts 8s infinite;
+            z-index: 2;
+        }
+
+        @keyframes float-hearts {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing orbs in background */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            animation: float-orb 15s infinite ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes float-orb {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(100px, -100px) scale(1.2);
+            }
+            66% {
+                transform: translate(-100px, 50px) scale(0.8);
+            }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 60px 80px;
+            border-radius: 30px;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.3),
+                0 0 100px rgba(102, 126, 234, 0.4),
+                inset 0 0 50px rgba(255,255,255,0.1);
             text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 10;
+            animation: container-glow 3s infinite alternate;
+            max-width: 600px;
+        }
+
+        @keyframes container-glow {
+            from {
+                box-shadow: 
+                    0 20px 60px rgba(0,0,0,0.3),
+                    0 0 100px rgba(102, 126, 234, 0.4),
+                    inset 0 0 50px rgba(255,255,255,0.1);
+            }
+            to {
+                box-shadow: 
+                    0 20px 60px rgba(0,0,0,0.3),
+                    0 0 120px rgba(102, 126, 234, 0.6),
+                    inset 0 0 60px rgba(255,255,255,0.2);
+            }
+        }
+
+        .ring-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: ring-bounce 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes ring-bounce {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
         }
 
         h1 {
-            color: #fff;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-style: italic;
         }
 
         .buttons {
             display: flex;
-            gap: 20px;
-            position: relative;
-            height: 60px;
+            gap: 30px;
             justify-content: center;
+            align-items: center;
+            margin-top: 30px;
         }
 
         button {
-            padding: 15px 40px;
-            font-size: 18px;
+            padding: 20px 50px;
+            font-size: 22px;
             border: none;
-            border-radius: 25px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-family: 'Georgia', serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         #yesBtn {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            position: relative;
         }
 
         #yesBtn:hover {
-            background: #5568d3;
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
         #noBtn {
-            background: #e74c3c;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        #noBtn:hover {
+            transform: scale(0.95);
         }
 
         .shake {
-            animation: shakeIt 0.5s;
+            animation: intense-shake 0.4s;
         }
 
-        @keyframes shakeIt {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+        @keyframes intense-shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            10% { transform: translateX(-15px) rotate(-5deg); }
+            20% { transform: translateX(15px) rotate(5deg); }
+            30% { transform: translateX(-15px) rotate(-5deg); }
+            40% { transform: translateX(15px) rotate(5deg); }
+            50% { transform: translateX(-15px) rotate(-5deg); }
+            60% { transform: translateX(15px) rotate(5deg); }
+            70% { transform: translateX(-15px) rotate(-5deg); }
+            80% { transform: translateX(15px) rotate(5deg); }
+            90% { transform: translateX(-15px) rotate(-5deg); }
         }
 
         .evil {
             position: fixed;
-            font-size: 40px;
-            animation: disappear 1s;
+            font-size: 50px;
+            animation: evil-disappear 1.5s;
             pointer-events: none;
+            z-index: 1000;
         }
 
-        @keyframes disappear {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        @keyframes evil-disappear {
+            0% { 
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% { 
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
         }
 
         footer {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             color: white;
             text-align: center;
             font-size: 14px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            z-index: 5;
         }
 
         footer p {
-            margin: 5px 0;
+            margin: 8px 0;
         }
 
         footer a {
             color: white;
             text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
         }
 
         footer a:hover {
-            border-bottom: 1px solid white;
+            border-bottom: 2px solid white;
+            text-shadow: 0 0 10px white;
+        }
+
+        /* Success modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 600px;
+            animation: modal-appear 0.5s;
+        }
+
+        @keyframes modal-appear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content h2 {
+            color: #667eea;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            color: #666;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .ring-icon {
+                font-size: 60px;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 18px;
+            }
+
+            .buttons {
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating hearts background -->
+    <div id="hearts-container"></div>
+    
+    <!-- Floating orbs -->
+    <div class="orb" style="width: 300px; height: 300px; left: 10%; top: 20%; animation-delay: 0s;"></div>
+    <div class="orb" style="width: 200px; height: 200px; right: 15%; top: 60%; animation-delay: 3s;"></div>
+    <div class="orb" style="width: 250px; height: 250px; left: 60%; bottom: 10%; animation-delay: 6s;"></div>
+
     <div class="container">
-        <h1>Reenu Will you Marry Me ?</h1>
+        <div class="ring-icon">💍</div>
+        <h1>Reenu, Will you be my Valentine Babyyy</h1>
+        <p class="subtitle">You're my forever and always ❤️</p>
         <div class="buttons">
-            <button id="yesBtn">Yes</button>
-            <button id="noBtn">No</button>
+            <button id="yesBtn">Yes! 💕</button>
+            <button id="noBtn">No 😈</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="ring-icon">💍✨</div>
+            <h2>I Knew It! 💖</h2>
+            <p>
+                You are a special addon to my Life<br>
+                Finally I'm celebrating Valentines day with my Valentine <br><br>
+                <strong>Marry Me before 2027 Pls !!!</strong><br><br>
+                <span style="font-size: 32px; color: #667eea;">I LOVE YOU SOOO MUCH ❤️</span>
+            </p>
         </div>
     </div>
 
     <footer>
         <p>
-            <a href="https://github.com/Ishaq45/Binary-Love" target="_blank"> Just for YOU BABY !!</a>
+            <a href="https://github.com/Ishaq45/Binary-Love" target="_blank">💝 Just for YOU BABY !!</a>
         </p>
-        <p>Created by <strong>@Ishaq45</strong> | Ishaq</p>
+        <p>Created with Love by <strong>@Ishaq45</strong> | Ishaq</p>
         <p>
             <a href="https://github.com/Ishaq45" target="_blank">Github</a>
         </p>
@@ -142,74 +405,117 @@
         const noBtn = document.getElementById('noBtn');
         const song = document.getElementById('song');
         const container = document.querySelector('.container');
+        const modal = document.getElementById('modal');
 
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.getElementById('hearts-container').appendChild(heart);
+
+            setTimeout(() => heart.remove(), 8000);
+        }
+
+        // Generate hearts continuously
+        setInterval(createHeart, 300);
+
+        // Yes button click
         yesBtn.addEventListener('click', function() {
-            alert('Nee Yes than solluva nu enaku theriyum Bcoz Unaku No solra option Illaiye Baby! Marry Me before 2027 Pls !!! I LOVE YOU SOOO MUCH ❤️');
+            modal.style.display = 'flex';
             
-            confetti({
-                particleCount: 150,
-                spread: 80
-            });
+            // Multiple confetti bursts
+            function fireConfetti() {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#667eea', '#764ba2', '#f093fb', '#f5576c']
+                });
+            }
+
+            fireConfetti();
+            setTimeout(fireConfetti, 200);
+            setTimeout(fireConfetti, 400);
             
             song.play();
+
+            // Continuous confetti
+            let confettiInterval = setInterval(() => {
+                confetti({
+                    particleCount: 50,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#667eea', '#764ba2', '#f093fb', '#f5576c']
+                });
+                confetti({
+                    particleCount: 50,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#667eea', '#764ba2', '#f093fb', '#f5576c']
+                });
+            }, 500);
+
+            setTimeout(() => clearInterval(confettiInterval), 5000);
         });
 
+        // Close modal on click
+        modal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // No button hover
         noBtn.addEventListener('mouseenter', function() {
             noBtn.classList.add('shake');
             
-            // Get container position and size
             const containerRect = container.getBoundingClientRect();
             const buttonWidth = noBtn.offsetWidth;
             const buttonHeight = noBtn.offsetHeight;
             
-            // Define safe zone around container (50px padding on each side)
-            const padding = 50;
+            const padding = 80;
             const safeLeft = containerRect.left - buttonWidth - padding;
             const safeRight = containerRect.right + padding;
             const safeTop = containerRect.top - buttonHeight - padding;
             const safeBottom = containerRect.bottom + padding;
             
-            // Random position that avoids the container
             let x, y;
             
-            // Choose randomly between left/right and top/bottom areas
             if (Math.random() > 0.5) {
-                // Position on left or right of container
                 if (Math.random() > 0.5) {
-                    // Right side
                     x = Math.min(safeRight, window.innerWidth - buttonWidth - 20);
                 } else {
-                    // Left side
                     x = Math.max(20, safeLeft);
                 }
                 y = Math.random() * (window.innerHeight - buttonHeight - 40) + 20;
             } else {
-                // Position on top or bottom of container
                 if (Math.random() > 0.5) {
-                    // Bottom
                     y = Math.min(safeBottom, window.innerHeight - buttonHeight - 20);
                 } else {
-                    // Top
                     y = Math.max(20, safeTop);
                 }
                 x = Math.random() * (window.innerWidth - buttonWidth - 40) + 20;
             }
             
-            // Move the button
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
             
-            // Generate evil faces
-            for(let i = 0; i < 5; i++) {
+            // Spawn evil emojis
+            const evilEmojis = ['😈', '👿', '💔', '🙅‍♂️', '⛔'];
+            for(let i = 0; i < 8; i++) {
                 let devil = document.createElement('div');
-                devil.textContent = '😈';
+                devil.textContent = evilEmojis[Math.floor(Math.random() * evilEmojis.length)];
                 devil.className = 'evil';
                 devil.style.left = Math.random() * (window.innerWidth - 50) + 'px';
                 devil.style.top = Math.random() * (window.innerHeight - 50) + 'px';
                 document.body.appendChild(devil);
                 
-                setTimeout(() => devil.remove(), 1000);
+                setTimeout(() => devil.remove(), 1500);
             }
         });
 
